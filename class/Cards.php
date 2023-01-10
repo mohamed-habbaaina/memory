@@ -8,7 +8,7 @@ class Cards
     // private $tab_card = ['a', 'b', 'c', 'd', 'e', 'f'];
     public function __construct()
     {
-        // $this->name = $name;
+        shuffle($this->tab_card_value);
     }
     public function deply(){
         // $this->depl = $depl;
@@ -25,14 +25,14 @@ class Cards
             '<table>
     <tbody>
         <tr>
-        <td><img src="img/' . $this->tab_card_value[0] . '"></td>
-        <td><img src="img/' . $this->tab_card_value[1] . '"></td>
-        <td><img src="img/' . $this->tab_card_value[2] . '"></td>
+        <td><img src="../img/' . $this->tab_card_value[0] . '"></td>
+        <td><img src="../img/' . $this->tab_card_value[1] . '"></td>
+        <td><img src="../img/' . $this->tab_card_value[2] . '"></td>
         </tr>
         <tr>
-        <td><img src="img/' . $this->tab_card_value[3] . '"></td>
-        <td><img src="img/' . $this->tab_card_value[4] . '"></td>
-        <td><img src="img/' . $this->tab_card_value[5] . '"></td>
+        <td><img src="../img/' . $this->tab_card_value[3] . '"></td>
+        <td><img src="../img/' . $this->tab_card_value[4] . '"></td>
+        <td><img src="../img/' . $this->tab_card_value[5] . '"></td>
         </tr>
     </tbody>
 </table>';
