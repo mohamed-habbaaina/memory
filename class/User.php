@@ -4,7 +4,7 @@ class User{
     private $login;
     private $password;
     private $db;
-    public $data;
+    private $data;
 
     private $servername = 'localhost';
     private $username_b = 'root';
@@ -45,17 +45,31 @@ class User{
     }
     }
 
+    // methode pour veriffier que le user est connecté.
+    public function isConnected(){
+        if(isset($_SESSION['login'])):
+            return true;
+        else: return false;
+        endif;
+    }
+
+    // connected.
+    public function connect($login, $password){
+        // recupérer le return de verif_db
+        $data = $this->verif_db($login);
+        
+        if (count($data) === 1):    
+            $exist = false;
+            $password_db = $data[0]['password'];
+            if(password_verify($password, $password_db) === true):
+                $exist = true;
+            endif;
+        endif;
+        return $exist;
+        // return count($data);
+    }
+
 
 
 
 }
-
-$user = new User();
-// $login = $user->getLogin('toto');
-// $login = 
-$login = 'toto';
-$password = 'toto';
-
-$user->register($login, $password);
-// var_dump($user->data);
-

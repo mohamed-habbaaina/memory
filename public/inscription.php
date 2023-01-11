@@ -37,15 +37,15 @@ if (isset($_POST['submit'])):
         // veriffier que le Login est dispo dans la DB.
         if (empty($user->verif_db($login))):
             $user->register($login, $password);
+
+            // creation d'une variable de session & header location.
+            $_SESSION['login'] = $login;
+            header('location: connexion.php');
+
         else: $errs[] = '<li>Le login n\'est pas disponible, Veuillez le changer !</li>';
         endif;
 
     endif;
-
-    
-
-
-
 endif;
 ?>
 <!DOCTYPE html>
@@ -60,14 +60,14 @@ endif;
 <?php require '../includes/header.php' ?>
 
 <main>
-    <form action="#" method="post">
-        <?php
+    <form action="#" method="post" class="form">
+        <p class="errs"><?php
             if(isset($errs)):
                 foreach($errs as $err):
                     echo $err;
                 endforeach;
             endif;
-        ?>
+        ?></p>
         <label for="username" placeholder="Votre Login">Login</label>
         <input type="text" name="username" placeholder="Votre Login">
         <label for="password">Password</label>
