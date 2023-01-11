@@ -61,13 +61,6 @@ endif;
 
 <main>
     <form action="#" method="post" class="form">
-        <p class="errs"><?php
-            if(isset($errs)):
-                foreach($errs as $err):
-                    echo $err;
-                endforeach;
-            endif;
-        ?></p>
         <label for="username" placeholder="Votre Login">Login</label>
         <input type="text" name="username" placeholder="Votre Login">
         <label for="password">Password</label>
@@ -75,6 +68,13 @@ endif;
         <label for="repass">Confirme Password</label>
         <input type="password" name="repass" placeholder="Confirme Password">
         <input type="submit" name="submit" value="Valider">
+        <p class="errs"><?php
+            if(isset($errs)):
+                foreach($errs as $err):
+                    echo $err;
+                endforeach;
+            endif;
+        ?></p>
     </form>
 </main>
 

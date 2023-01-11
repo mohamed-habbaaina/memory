@@ -27,13 +27,11 @@ if (isset($_POST['submit'])):
 
     if (empty($errs)):
 
-        var_dump($user->connect($login, $password));
         if($user->connect($login, $password)):
         $_SESSION['login'] = $login;
-            echo '<br>';
-        var_dump($_SESSION['login']);
         else: $errs[] = 'Login ou Password incorect';
         endif;
+
     endif;
 endif;
 ?>
@@ -49,6 +47,11 @@ endif;
 <?php require '../includes/header.php' ?>
 
 <form action="#" method="post" class="form">
+        <label for="username" placeholder="Votre Login">Login</label>
+        <input type="text" name="username" placeholder="Votre Login">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Votre Password">
+        <input type="submit" name="submit" value="Valider">
         <p class="errs"><?php
             if(isset($errs)):
                 foreach($errs as $err):
@@ -56,11 +59,6 @@ endif;
                 endforeach;
             endif;
         ?></p>
-        <label for="username" placeholder="Votre Login">Login</label>
-        <input type="text" name="username" placeholder="Votre Login">
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="Votre Password">
-        <input type="submit" name="submit" value="Valider">
     </form>
 
 <?php require '../includes/footer.php' ?>

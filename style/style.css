@@ -6,3 +6,6 @@
 img{
     width: 100px;
 }
+img:hover{
+    transform: scale(1.1);
+}

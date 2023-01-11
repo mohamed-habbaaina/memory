@@ -55,18 +55,25 @@ class User{
 
     // connected.
     public function connect($login, $password){
-        // recupérer le return de verif_db
+
         $data = $this->verif_db($login);
         
+        $exist = false;
         if (count($data) === 1):    
-            $exist = false;
             $password_db = $data[0]['password'];
             if(password_verify($password, $password_db) === true):
                 $exist = true;
             endif;
         endif;
         return $exist;
-        // return count($data);
+    }
+
+    // deconnect
+    public function deConnect(){
+        $_SESSION = array();//Ecraser le tableau de session 
+        session_unset(); //Detruit toutes les variables de la session en cours
+        session_destroy();//Destruit la session en cours
+        header('location: connexion.php');
     }
 
 
